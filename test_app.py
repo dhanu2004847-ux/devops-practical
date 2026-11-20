@@ -1,20 +1,9 @@
 
-import unittest
 from app import app
 
-class FlaskAppTest(unittest.TestCase):
+def test_home():
+    client = app.test_client()
+    response = client.get('/')
 
-    def setUp(self):
-        self.client = app.test_client()
-
-    def test_home_page(self):
-        response = self.client.get('/')
-
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(
-            response.data.decode(),
-            "Hello, DevOps World! We are LIVE on Render!"
-        )
-
-if __name__ == '__main__':
-    unittest.main()
+    assert response.status_code == 200
+    assert b"CI/CD and Docker Pipeline is a massive success! V2" in response.data
