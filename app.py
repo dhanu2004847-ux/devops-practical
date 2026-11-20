@@ -9,6 +9,5 @@ def home():
     return "Hello, DevOps World! We are LIVE on Render!"
 
 if __name__ == '__main__':
-    # Use Render's assigned port or default to 5000 locally
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
